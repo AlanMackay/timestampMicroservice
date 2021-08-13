@@ -26,7 +26,7 @@ app.get("/api/hello", function (req, res) {
 
 app.get("/api/:date?", (req, res) => {
   if(req.params.date){
-    unixTimestamp = new Date(req.params.date)
+    var unixTimestamp = new Date(req.params.date)
     if(!isNaN(unixTimestamp.valueOf() && unixTimestamp instanceof Date)){
       res.json({unix:unixTimestamp, UTC: unixTimeStamp.toUTCString()});
     }
