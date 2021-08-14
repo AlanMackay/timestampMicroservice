@@ -50,7 +50,7 @@ app.get("/api/:date?", (req, res) => {
 
   unixtimestamp = new Date();
 
-  res.json({unix:unixtimestamp, utc: unixtimestamp.toUTCString()});
+  res.json({unix:unixtimestamp.getTime(), utc: unixtimestamp.toUTCString()});
 
   
 });
