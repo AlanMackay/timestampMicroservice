@@ -41,7 +41,7 @@ app.get("/api/:date?", (req, res) => {
 
     if(!isNaN(unixTimestamp.valueOf()) && unixTimestamp instanceof Date && unixTimestamp != undefined){
 
-      res.json({unix:unixTimestamp.getTime(), UTC: unixTimestamp.toUTCString()});
+      res.json({unix:unixTimestamp.getTime(), utc: unixTimestamp.toUTCString()});
 
     }
 
@@ -50,7 +50,7 @@ app.get("/api/:date?", (req, res) => {
 
   unixtimestamp = new Date();
 
-  res.json({unix:unixtimestamp, UTC: unixtimestamp.toUTCString()});
+  res.json({unix:unixtimestamp, utc: unixtimestamp.toUTCString()});
 
   
 });
