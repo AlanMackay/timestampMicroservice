@@ -25,22 +25,32 @@ app.get("/api/hello", function (req, res) {
 });
 
 app.get("/api/:date?", (req, res) => {
+  var unixTimestamp;
+
+
   if(req.params.date){
+    var dateParam = req.params.date
 
-    var unixTimestamp = new Date(req.params.date);
+    //check if the date parameter is in ms format
+    if(!isNaN(dateParam) && !isNaN(parseFloat(dateParam))){
+      unixTimestamp = new Date(Number(dateParam));
+    }else{
+      unixTimestamp = new Date(dateParam);
+    }
+    
 
-    if(!isNaN(unixTimestamp.valueOf() && unixTimestamp instanceof Date)){
+    if(!isNaN(unixTimestamp.valueOf()) && unixTimestamp instanceof Date && unixTimestamp != undefined){
 
-      res.json({unix:unixTimestamp, UTC: unixTimestamp.toUTCString()});
+      res.json({unix:unixTimestamp.getTime(), UTC: unixTimestamp.toUTCString()});
 
     }
 
     res.json({error: "Invalid Date"});
   }
 
-  var timestamp = Date().now
+  unixtimestamp = new Date();
 
-  res.json({unix:timestamp, UTC: timestamp.toUTCString()});
+  res.json({unix:unixtimestamp, UTC: unixtimestamp.toUTCString()});
 
   
 });
